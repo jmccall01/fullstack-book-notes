@@ -1,0 +1,255 @@
+:root {
+    --textcol:  #000000c4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("resources/bg.jpg");
+    background-repeat: repeat;
+    background-size: auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+.main_header {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 50px;
+    color: white;
+}
+
+.header-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin: 20px 0;
+}
+
+.create-button, .sort-dd {
+    font-family: Trebuchet MS;
+    font-weight: bold;
+    font-size: 15px;
+    height: 35px;
+    width: 100px;
+    text-align: center;
+    border: none;
+}
+
+.create-button {
+    background-color: rgb(7, 206, 7);
+    border-radius: 15px;
+}
+
+.sort-dd {
+    background-color: white;
+    border-radius: 3px;
+}
+
+.cover-container {
+    float: left;
+    margin-right: 15px;
+}
+
+.cover-img {
+    width: 140px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    top: 45%;
+    right: 100%;
+   
+    position: absolute;
+    z-index: 1;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.item-container {
+    padding-bottom: 20px;
+}
+
+.entry-container {
+    display: flex;
+    flex-direction: column;
+    padding:  10px;
+    background-color: rgba(255, 255, 255, 0.415);
+    border-radius: 10px;
+}
+
+.entries-list {
+    margin: 0 25vw;
+}
+
+.title_author, .date, .rating, .content {
+    color: var(--textcol);
+    padding-bottom: 8px;
+    font-weight: bold;
+}
+
+.title_author {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.title-underline {
+    border-color: black;
+    margin: 0;
+    border-style: solid;
+    border-width: 1.5px;
+}
+
+.date {
+    margin-top: 10px;
+}
+
+.g {
+    color: rgb(50, 242, 50);
+}
+
+.m {
+    color: rgb(255, 255, 0);
+}
+
+.b {
+    color: rgb(134, 0, 0);
+}
+
+.g, .m, .b {
+    font-weight: 900;
+}
+
+.entry-buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding-right: 30px;
+}
+
+.delete-button, .edit-button, .submit-edit{
+    border: none;
+    background-color: transparent;
+}
+
+.editform {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.rating-in-container {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.rating-in-label {
+    color: var(--textcol);
+    font-weight: bold;
+}
+
+.rating-in {
+    width: 25px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.792);
+}
+
+.content-in {
+    resize: none;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+
+/* New book entry page styling */
+.new-book-header {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 40px;
+    color: white;
+}
+
+.new-entry-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.new-entry-form {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.new-entry-form input {
+    height: 20px;
+    padding-left: 10px;
+    width: 40vw;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+
+.new-entry-form textarea {
+    padding-left: 10px;
+    resize: none;
+    background-color: rgba(255, 255, 255, 0.829);
+}
+
+.new-entry-form button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 25px;
+    border-radius: 50px;
+    align-self: center;
+    background-color: rgb(36, 103, 203);
+    font-weight: bold ;
+}
+
+
+/* Responsive styling */
+
+@media(min-width: 2000px){
+    .entries-list {
+        margin: 0 30vw;
+    }
+    .cover-img {
+        width: 170px;
+    }
+}
+
+@media(max-width: 1000px){
+    .entries-list {
+        margin: 0 5vw;
+    }
+    .tooltip:hover .tooltiptext {
+        visibility: hidden;
+    }
+
+    .header-buttons-container {
+        gap: 20px;
+    }
+
+    .new-entry-form input {
+        width: 80vw;
+    }
+    .cover-img {
+        width: 120px;
+    }
+}

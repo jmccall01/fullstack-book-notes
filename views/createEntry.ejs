@@ -1,0 +1,15 @@
+<%- include('partials/header.ejs')  %>
+    <hr />
+    <h2 class="new-book-header">New Book Entry</h2>
+    <div class="new-entry-form-container">
+        <form class="new-entry-form" action="/create" method="post">
+            <input name="title" type="text" placeholder="Title" required />
+            <input name="author" type="text" placeholder="Author" required />
+            <input name="rating" type="number" max="10" placeholder="Rating" required />
+            <input name="dateread" type="date" placeholder="Date read: yyyy-mm-dd" required />
+            <input name="olid" type="text" placeholder="OLID: Open Library ID" required />
+            <textarea name="content" maxlength="3000" rows="15" placeholder="Description" required></textarea>
+            <button type="submit">Publish</button>
+        </form>
+    </div>
+<%- include('partials/footer.ejs')  %>

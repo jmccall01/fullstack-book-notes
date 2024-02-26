@@ -1,0 +1,56 @@
+<%- include('partials/header.ejs')  %>
+    <hr />
+    <div class="header-buttons-container">
+        <form action="/create" method="get">
+            <button class="create-button">New Entry</button>
+        </form>
+        <form action="/" method="get" >
+            <select class="sort-dd" type="submit" name="sort" id="sort" onchange='this.form.submit()'>
+                <option hidden><%- locals.sort.charAt(0).toUpperCase() + locals.sort.slice(1) %></option>
+                <option value="date">Date</option>
+                <option value="rating">Rating</option>
+                <option value="author">Author</option>
+            </select>
+        </form>
+    </div>
+    <div class="entries-list">
+    <% locals.data.forEach(elem => { %>
+        <div class="item-container">
+            <div id="entry-<% elem.id %>" class="entry-container">
+                <div class="book info">
+                    <div class="cover-container">
+                        <a href="https://www.amazon.co.uk/s?k=<%- elem.title.replace(/\s/g,'+')%>+<%- elem.author.replace(/\s/g,'+')%>" class="tooltip" target="_blank">
+                            <img src=<%= elem.url %> class="cover-img" />
+                            <span class="tooltiptext">View on Amazon</span>
+                        </a>
+                    </div>
+                    <h2 class="title_author"><%= elem.title %> - <%= elem.author %></h2>
+                    <hr class="title-underline" />
+                    <p class="date">Date Read: <%= new Date(elem.dateread).toLocaleDateString("en-Uk") %> </p>
+                    <form id="editForm-<%= elem.id %>" action="/edit" method="post" hidden>
+                        <input type="hidden" value=<%= elem.id %> name="id"/>
+                        <input type="hidden" value=<%= locals.sort %> name="sort"/>
+                        <div class="rating-in-container">
+                            <label for="rating" class="rating-in-label">Rating:</label>
+                            <input name="rating" type="number" max="10" value=<%= elem.rating %> class="rating-in" required />
+                        </div>
+                        <textarea name="content" rows="11" maxlength="3000" class="content-in" required><%= elem.content %></textarea>
+                    </form>
+                    <p id="rating-<%= elem.id %>" class="rating">
+                        Rating: <span class="ratingcolor"><%= elem.rating %></span>
+                    </p>
+                    <p id="content-<%= elem.id %>" class="content"><%= elem.content %></p>
+                </div>
+                <div class="entry-buttons-container">
+                    <button id="goToEdit-<%= elem.id %>" onclick="toggleHidden('<%= elem.id %>')" class="edit-button"><img src="/resources/pen-to-square-solid.svg" height="30" /></button>
+                    <button type="submit" id="submitEdit-<%= elem.id %>" onclick="toggleHidden('<%= elem.id %>')" form="editForm-<%= elem.id %>" class="submit-edit" value="tick" hidden><img src="/resources/square-check-solid.svg" height="30" /></button>
+                    <form action="/delete" method="post">
+                        <input type="hidden" value=<%= elem.id %> name="id"/>
+                        <button type="submit" value="Delete" class="delete-button"><img src="/resources/trash-can-solid.svg" height="30" /></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <%}); %>
+    </div>
+<%- include('partials/footer.ejs')  %>
